@@ -14,7 +14,7 @@ import {
 
 const router = createBrowserRouter([
   {
-    path: "/cordinators",
+    path: "/addevents",
     element: <Cordinators />,
   },
   {

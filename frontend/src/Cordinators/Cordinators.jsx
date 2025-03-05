@@ -87,7 +87,7 @@ const Cordinators = () => {
         <label className={styles.label}>Enter event date</label>
         <input type="date" className={styles.input} value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
         
-        <label className={styles.label}>Enter Cordinators Detail</label>
+        <label className={styles.label}>Enter Coordinators Detail</label>
         <div className={styles.row}>
           <input type="text" placeholder="Coordinator 1 Name" className={styles.input} value={coordinator1.name} onChange={(e) => setCoordinator1({ ...coordinator1, name: e.target.value })} />
           <input type="text" placeholder="Phone Number" className={styles.input} value={coordinator1.phone} onChange={(e) => setCoordinator1({ ...coordinator1, phone: e.target.value })} />
