@@ -76,22 +76,27 @@ const Cordinators = () => {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <h2 className={styles.title}>Add Event</h2>
+        <h2 className={styles.title}>Advyka'25</h2>
+        <label className={styles.label}>Enter Event Name & Description</label>
         <input type="text" placeholder="Event Name" className={styles.input} value={eventName} onChange={(e) => setEventName(e.target.value)} />
         <textarea placeholder="Event Description" className={styles.textarea} value={eventDescription} onChange={(e) => setEventDescription(e.target.value)} />
+        <label className={styles.label}>Enter event date</label>
         <input type="date" className={styles.input} value={eventDate} onChange={(e) => setEventDate(e.target.value)} />
-
+        
+        <label className={styles.label}>Enter Cordinators Detail</label>
         <div className={styles.row}>
           <input type="text" placeholder="Coordinator 1 Name" className={styles.input} value={coordinator1.name} onChange={(e) => setCoordinator1({ ...coordinator1, name: e.target.value })} />
-          <input type="text" placeholder="Phone" className={styles.input} value={coordinator1.phone} onChange={(e) => setCoordinator1({ ...coordinator1, phone: e.target.value })} />
+          <input type="text" placeholder="Phone Number" className={styles.input} value={coordinator1.phone} onChange={(e) => setCoordinator1({ ...coordinator1, phone: e.target.value })} />
         </div>
 
         <div className={styles.row}>
           <input type="text" placeholder="Coordinator 2 Name" className={styles.input} value={coordinator2.name} onChange={(e) => setCoordinator2({ ...coordinator2, name: e.target.value })} />
-          <input type="text" placeholder="Phone" className={styles.input} value={coordinator2.phone} onChange={(e) => setCoordinator2({ ...coordinator2, phone: e.target.value })} />
+          <input type="text" placeholder="Phone Number" className={styles.input} value={coordinator2.phone} onChange={(e) => setCoordinator2({ ...coordinator2, phone: e.target.value })} />
         </div>
 
+        <label className={styles.label}>Enter Form Link</label>
         <input type="text" placeholder="Google Form Link" className={styles.input} value={googleFormLink} onChange={(e) => setGoogleFormLink(e.target.value)} />
+        <label className={styles.label}>Upload Event Poster</label>
         <input type="file" className={styles.fileInput} onChange={(e) => setImage(e.target.files[0])} />
         <button type="button" className={styles.uploadButton} onClick={handleImageUpload} disabled={uploading}>
           {uploading ? "Uploading..." : "Upload Image"}

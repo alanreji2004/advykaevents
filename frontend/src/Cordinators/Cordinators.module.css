@@ -31,7 +31,10 @@
     width: 100%;
     max-width: 500px;
   }
-  
+  .label{
+    color: #fff;
+    margin-bottom: 8px;
+  }
   .title {
     color: #fff;
     text-align: center;
