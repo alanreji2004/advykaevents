@@ -3,6 +3,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client'
 import Cordinators from './Cordinators/Cordinators';
 import Admin from './Admin/Admin';
+import ProtectedRoute from "./ProtectedRoute";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,16 +11,30 @@ import {
   Routes,
   Link,
 } from "react-router-dom";
+import Home from './Home/Home';
+import OrganizerLogin from './OrganizerLogin/OrganizerLogin';
 
 
 const router = createBrowserRouter([
   {
     path: "/addevents",
-    element: <Cordinators />,
+    element: (
+      <ProtectedRoute>
+        <Cordinators />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/organizerlogin",
+    element: <OrganizerLogin />,
   },
 ]);
 
