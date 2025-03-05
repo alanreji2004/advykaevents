@@ -35,23 +35,24 @@ const Cordinators = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!imageUrl) return alert("Please upload an image first!");
 
     try {
-      await addDoc(collection(db, "events"), {
+      const docRef = await addDoc(collection(db, "events"), {
         eventName,
         eventDescription,
         eventDate,
-        coordinator1,
-        coordinator2,
+        cor1_name: coordinator1.name,
+        cor1_num: coordinator1.phone,
+        cor2_name: coordinator2.name,
+        cor2_num: coordinator2.phone,
         googleFormLink,
-        imageUrl,
-        createdAt: new Date(),
+        eventPoster: imageUrl,
       });
 
       alert("Event added successfully!");
+      console.log("Document written with ID: ", docRef.id);
     } catch (error) {
-      console.error("Error adding event:", error);
+      console.error("Error adding document: ", error);
     }
   };
 
@@ -62,7 +63,7 @@ const Cordinators = () => {
         <input type="text" placeholder="Event Name" className={styles.input} onChange={(e) => setEventName(e.target.value)} />
         <textarea placeholder="Event Description" className={styles.textarea} onChange={(e) => setEventDescription(e.target.value)} />
         <input type="date" className={styles.input} onChange={(e) => setEventDate(e.target.value)} />
-        
+
         <div className={styles.row}>
           <input type="text" placeholder="Coordinator 1 Name" className={styles.input} onChange={(e) => setCoordinator1({ ...coordinator1, name: e.target.value })} />
           <input type="text" placeholder="Phone" className={styles.input} onChange={(e) => setCoordinator1({ ...coordinator1, phone: e.target.value })} />

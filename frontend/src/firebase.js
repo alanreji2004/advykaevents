@@ -1,16 +1,20 @@
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBkNY9_7LZeg-jU54s1zTTDEAagtC9actA",
+  authDomain: "advyka-events.firebaseapp.com",
+  databaseURL: "https://advyka-events-default-rtdb.firebaseio.com",
+  projectId: "advyka-events",
+  storageBucket: "advyka-events.firebasestorage.app",
+  messagingSenderId: "122590906175",
+  appId: "1:122590906175:web:58889540498ef6486a758a",
+  measurementId: "G-MRTHTDXSZE"
 };
 
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 export { db };
