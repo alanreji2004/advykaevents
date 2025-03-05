@@ -40,6 +40,10 @@ const Cordinators = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!eventName || !eventDescription || !eventDate || !coordinator1.name || !coordinator1.phone || !googleFormLink || !imageUrl) {
+      alert("Please fill in all required fields!");
+      return;
+    }
     setSubmitting(true);
 
     try {
