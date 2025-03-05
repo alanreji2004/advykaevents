@@ -19,11 +19,11 @@ const Cordinators = () => {
 
     const formData = new FormData();
     formData.append("file", image);
-    formData.append("upload_preset", "YOUR_UPLOAD_PRESET");
+    formData.append("upload_preset", "advyka-events");
 
     try {
       const res = await axios.post(
-        `https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/image/upload`,
+        `https://api.cloudinary.com/v1_1/dz6dyfijp/image/upload`,
         formData
       );
       setImageUrl(res.data.secure_url);
