@@ -113,7 +113,12 @@
   .submitButton:hover {
     background-color: #ff9900;
   }
-  
+  .uploadButton:disabled,
+.submitButton:disabled {
+  background-color: grey;
+  cursor: not-allowed;
+}
+
   
   @media (max-width: 600px) {
     .container {
