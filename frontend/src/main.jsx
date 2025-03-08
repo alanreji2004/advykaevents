@@ -14,7 +14,7 @@ import {
 import Home from './Home/Home';
 import OrganizerLogin from './OrganizerLogin/OrganizerLogin';
 import AdminLogin from './AdminLogin/AdminLogin';
-
+import EditEvent from './EditEvent/EditEvent';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +44,14 @@ const router = createBrowserRouter([
   {
     path: "/adminlogin",
     element: <AdminLogin />,
+  },
+  {
+    path: "/admin/edit/:id",
+    element: (
+      <ProtectedRoute admin={true}>
+        <EditEvent />
+      </ProtectedRoute>
+    ),
   },
 ]);
 

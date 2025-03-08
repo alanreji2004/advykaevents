@@ -8,7 +8,7 @@
   --input-border: rgba(255, 255, 255, 0.2);
 }
 
-.adminContainer {
+.editContainer {
   font-family: "Poppins", sans-serif;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -19,93 +19,103 @@
   align-items: center;
 }
 
-.adminTitle {
+.editTitle {
   font-size: 2rem;
   font-weight: 600;
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
 
-.searchInput {
+.label {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+  width: 100%;
+  max-width: 400px;
+}
+
+.input,
+.select,
+.textarea {
   background: var(--input-bg);
   border: 1px solid var(--input-border);
   border-radius: 5px;
   padding: 10px;
   font-size: 1rem;
   color: var(--text-color);
-  margin-bottom: 20px;
+  width: 100%;
+  max-width: 400px;
   transition: all 0.3s ease;
-  text-align: center;
-  width: 250px;
 }
 
-.searchInput:focus {
+.input:focus,
+.select:focus,
+.textarea:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
 }
 
-.eventsGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 500px;
+.select {
+  appearance: none;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  cursor: pointer;
 }
 
-.eventCard {
-  background: rgba(20, 20, 20, 0.95);
-  padding: 15px;
-  border-radius: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1.1rem;
+.select option {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-.eventName {
-  color: var(--primary-color);
-  font-weight: 500;
+.preview {
+  width: 200px;
+  height: auto;
+  border-radius: 5px;
+  margin: 10px 0;
 }
 
-.buttonGroup {
-  display: flex;
-  gap: 10px;
-}
-
-.editButton,
-.deleteButton {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 0.9rem;
+.uploadButton,
+.saveButton {
+  font-size: 1rem;
   border: none;
-  padding: 8px 12px;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 10px;
 }
 
-.editButton {
+.uploadButton {
   background: var(--primary-color);
   color: var(--text-color);
 }
 
-.deleteButton {
-  background: red;
+.saveButton {
+  background: green;
   color: var(--text-color);
 }
 
-.editButton:hover {
+.saveButton:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+.uploadButton:hover {
   background: #e66a00;
 }
 
-.deleteButton:hover {
-  background: darkred;
+.saveButton:hover:enabled {
+  background: darkgreen;
 }
 
 @media (max-width: 600px) {
-  .searchInput {
+  .input,
+  .select,
+  .textarea {
     width: 100%;
   }
 }
