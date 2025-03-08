@@ -14,7 +14,7 @@ const Home = () => {
           coordination and administration.
         </p>
         <div className={styles.buttonContainer}>
-          <Link to="/admin" className={styles.button}>
+          <Link to="/adminlogin" className={styles.button}>
             Admin Panel
           </Link>
           <Link to="/organizerlogin" className={styles.button}>

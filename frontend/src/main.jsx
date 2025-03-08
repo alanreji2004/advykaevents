@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import Home from './Home/Home';
 import OrganizerLogin from './OrganizerLogin/OrganizerLogin';
+import AdminLogin from './AdminLogin/AdminLogin';
 
 
 const router = createBrowserRouter([
@@ -26,7 +27,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: (
+      <ProtectedRoute admin = {true}>
+        <Admin />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/",
@@ -35,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/organizerlogin",
     element: <OrganizerLogin />,
+  },
+  {
+    path: "/adminlogin",
+    element: <AdminLogin />,
   },
 ]);
 
