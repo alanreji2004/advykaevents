@@ -124,3 +124,9 @@
 .password-toggle svg {
   pointer-events: none; 
 }
+@media (max-width: 480px) {
+  .organizer-login-box{
+    width: 75%;
+    padding: 1.5rem;
+  }
+}

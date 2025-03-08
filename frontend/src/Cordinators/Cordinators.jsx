@@ -8,7 +8,8 @@ const Cordinators = () => {
   const [eventName, setEventName] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventDate, setEventDate] = useState("");
-  const [eventType, setEventType] = useState(""); // New State for Event Type
+  const [department, setDepartment] = useState(""); 
+  const [eventType, setEventType] = useState("");
   const [coordinator1, setCoordinator1] = useState({ name: "", phone: "" });
   const [coordinator2, setCoordinator2] = useState({ name: "", phone: "" });
   const [googleFormLink, setGoogleFormLink] = useState("");
@@ -45,6 +46,7 @@ const Cordinators = () => {
       !eventName ||
       !eventDescription ||
       !eventDate ||
+      !department || 
       !eventType || 
       !coordinator1.name ||
       !coordinator1.phone ||
@@ -61,6 +63,7 @@ const Cordinators = () => {
         eventName,
         eventDescription,
         eventDate,
+        department,
         eventType,
         cor1_name: coordinator1.name,
         cor1_num: coordinator1.phone,
@@ -76,6 +79,7 @@ const Cordinators = () => {
       setEventName("");
       setEventDescription("");
       setEventDate("");
+      setDepartment("");
       setEventType("");
       setCoordinator1({ name: "", phone: "" });
       setCoordinator2({ name: "", phone: "" });
@@ -117,13 +121,26 @@ const Cordinators = () => {
           onChange={(e) => setEventDate(e.target.value)}
         />
 
+        <label className={styles.label}>Select Department</label>
+        <select
+          className={styles.select}
+          value={department}
+          onChange={(e) => setDepartment(e.target.value)}
+        >
+          <option value="">Select Department</option>
+          <option value="CSE">CSE</option>
+          <option value="ECE">ECE</option>
+          <option value="EEE">EEE</option>
+          <option value="MECH">MECH</option>
+        </select>
+
         <label className={styles.label}>Select Event Type</label>
         <select
           className={styles.select}
           value={eventType}
           onChange={(e) => setEventType(e.target.value)}
         >
-          <option value="">Select an option</option>
+          <option value="">Select Event Type</option>
           <option value="competition">Competition</option>
           <option value="workshop">Workshop</option>
           <option value="event">Event</option>

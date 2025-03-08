@@ -9,19 +9,27 @@ const Admin = () => {
   const [events, setEvents] = useState([]);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
+  const adminDepartment = sessionStorage.getItem("adminDepartment"); 
 
   useEffect(() => {
     const fetchEvents = async () => {
-      const querySnapshot = await getDocs(collection(db, "events"));
-      const eventList = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setEvents(eventList);
+      try {
+        const querySnapshot = await getDocs(collection(db, "events"));
+        const eventList = querySnapshot.docs
+          .map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }))
+          .filter((event) => event.department.toUpperCase() === adminDepartment); // Ensure uppercase match
+
+        setEvents(eventList);
+      } catch (error) {
+        console.error("Error fetching events:", error);
+      }
     };
 
     fetchEvents();
-  }, []);
+  }, [adminDepartment]);
 
   const handleDelete = async (id) => {
     const confirmDelete = window.confirm("Are you sure you want to delete this event?");
@@ -37,7 +45,7 @@ const Admin = () => {
 
   return (
     <div className={styles.adminContainer}>
-      <h1 className={styles.adminTitle}>Manage Events</h1>
+      <h1 className={styles.adminTitle}>Manage Events ({adminDepartment})</h1>
       <input
         type="text"
         placeholder="Search events..."

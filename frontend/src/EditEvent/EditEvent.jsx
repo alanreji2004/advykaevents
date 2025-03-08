@@ -13,14 +13,23 @@ const EditEvent = () => {
   const [imageFile, setImageFile] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [changesMade, setChangesMade] = useState(false);
+  const adminDepartment = sessionStorage.getItem("adminDepartment"); 
 
   useEffect(() => {
     const fetchEvent = async () => {
       const docRef = doc(db, "events", id);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        setEventData(docSnap.data());
-        setUpdatedData(docSnap.data());
+        const eventDetails = docSnap.data();
+
+        if (eventDetails.department.toUpperCase() !== adminDepartment) {
+          alert("You are not authorized to edit this event.");
+          navigate("/admin");
+          return;
+        }
+
+        setEventData(eventDetails);
+        setUpdatedData(eventDetails);
       } else {
         alert("Event not found!");
         navigate("/admin");
@@ -28,7 +37,7 @@ const EditEvent = () => {
     };
 
     fetchEvent();
-  }, [id, navigate]);
+  }, [id, navigate, adminDepartment]);
 
   const handleChange = (e) => {
     setUpdatedData({ ...updatedData, [e.target.name]: e.target.value });
@@ -48,6 +57,7 @@ const EditEvent = () => {
         `https://api.cloudinary.com/v1_1/dz6dyfijp/image/upload`,
         formData
       );
+
       setUpdatedData({ ...updatedData, eventPoster: res.data.secure_url });
       setChangesMade(true);
     } catch (error) {
@@ -59,10 +69,29 @@ const EditEvent = () => {
   };
 
   const handleSave = async () => {
+    if (!changesMade) return;
+
     const docRef = doc(db, "events", id);
-    await updateDoc(docRef, updatedData);
-    alert("Event updated successfully!");
-    navigate("/admin");
+    try {
+      const updates = {};
+      Object.keys(updatedData).forEach((key) => {
+        if (updatedData[key] !== eventData[key]) {
+          updates[key] = updatedData[key];
+        }
+      });
+
+      if (Object.keys(updates).length > 0) {
+        await updateDoc(docRef, updates);
+        alert("Event updated successfully!");
+      } else {
+        alert("No changes made.");
+      }
+
+      navigate("/admin");
+    } catch (error) {
+      console.error("Error updating event:", error);
+      alert("Failed to update event.");
+    }
   };
 
   if (!eventData) return <p className={styles.loadingText}>Loading...</p>;

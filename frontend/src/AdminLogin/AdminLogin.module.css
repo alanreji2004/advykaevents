@@ -1,124 +1,105 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
-
-:root {
-  --primary-color: #ff7b00;
-  --background-color: #0d0d0d;
-  --text-color: #ffffff;
-  --input-bg: rgba(255, 255, 255, 0.1);
-  --input-border: rgba(255, 255, 255, 0.2);
-}
-
-.admin-login-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-  font-family: "Poppins", sans-serif;
-  background-color: var(--background-color);
-}
-
-.admin-login-box {
-  background: rgba(20, 20, 20, 0.95);
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 350px;
-  width: 100%;
-  height: 400px;
-}
-
-.admin-brand {
-  font-family: "Poppins", sans-serif;
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
-}
-
-.admin-subtitle {
-  font-size: 1.2rem;
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-}
-
-.admin-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.admin-input {
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 1rem;
-  color: var(--text-color);
-  margin-bottom: 10px;
-  transition: all 0.3s ease;
-  width: 100%;
-}
-
-.admin-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-}
-
-.admin-button {
-  background: var(--primary-color);
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 1rem;
-  color: var(--text-color);
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.admin-button:hover {
-  background: #e66a00;
-}
-
-.admin-error {
-  color: red;
-  font-size: 0.9rem;
-  margin-top: 5px;
-}
-
-.password-container {
-  position: relative;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.password-input {
-  width: 100%;
-  padding: 10px 40px 10px 10px;
-  border: 1px solid var(--input-border);
-  border-radius: 5px;
-  font-size: 1rem;
-  background: var(--input-bg);
-  color: var(--text-color);
-  transition: all 0.3s ease;
-}
-
-.password-input:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-}
-
-.password-toggle {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-color);
-}
-
-.password-toggle svg {
-  pointer-events: none;
-}
+.adminLoginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #121212;
+  }
+  
+  .adminLoginBox {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  .adminBrand {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #ff7b00;
+    margin-bottom: 0.5rem;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .adminSubtitle {
+    color: #b0b0b0;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .adminForm {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .adminInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .passwordContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  
+  .passwordInput {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .passwordToggle {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #b0b0b0;
+  }
+  
+  .adminError {
+    color: #ff4a4a;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+  
+  .adminButton {
+    background: #ff7b00;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    transition: background 0.3s;
+    margin-top: 20px;
+  }
+  
+  .adminButton:hover {
+    background: #e66a00;
+  }
+  
+  @media (max-width: 480px) {
+    .adminLoginBox {
+      width: 70%;
+      padding: 1.5rem;
+    }
+  }
+  
