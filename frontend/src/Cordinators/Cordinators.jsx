@@ -128,8 +128,8 @@ const Cordinators = () => {
           onChange={(e) => setDepartment(e.target.value)}
         >
           <option value="">Select Department</option>
-          <option value="CSE">CSE</option>
-          <option value="ECE">ECE</option>
+          <option value="CSE">CSE & AI</option>
+          <option value="ECE">ECE & ECS</option>
           <option value="EEE">EEE</option>
           <option value="MECH">MECH</option>
         </select>
