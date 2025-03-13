@@ -132,6 +132,7 @@ const Cordinators = () => {
           <option value="ECE">ECE & ECS</option>
           <option value="EEE">EEE</option>
           <option value="MECH">MECH</option>
+          <option value="COMMON">COMMON</option>
         </select>
 
         <label className={styles.label}>Select Event Type</label>

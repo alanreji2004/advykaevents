@@ -25,6 +25,29 @@
   color: var(--primary-color);
   margin-bottom: 1rem;
 }
+.adminHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15vh;
+  }
+  
+  .logoutButton {
+    background: #ff0101;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .logoutButton:hover {
+    background: #e64a19;
+  }
 
 .searchInput {
   background: var(--input-bg);

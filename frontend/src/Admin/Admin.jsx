@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import { FiEdit2, FiTrash2,FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import styles from "./Admin.module.css";
 
@@ -20,7 +20,7 @@ const Admin = () => {
             id: doc.id,
             ...doc.data(),
           }))
-          .filter((event) => event.department.toUpperCase() === adminDepartment); // Ensure uppercase match
+          .filter((event) => event.department.toUpperCase() === adminDepartment); 
 
         setEvents(eventList);
       } catch (error) {
@@ -38,14 +38,22 @@ const Admin = () => {
       setEvents(events.filter((event) => event.id !== id));
     }
   };
-
+  const handleLogout = () => {
+    sessionStorage.removeItem("adminDepartment");
+    navigate("/");
+  };
   const filteredEvents = events.filter((event) =>
     event.eventName.toLowerCase().includes(search.toLowerCase())
   );
 
   return (
     <div className={styles.adminContainer}>
-      <h1 className={styles.adminTitle}>Manage Events ({adminDepartment})</h1>
+      <div className={styles.adminHeader}>
+        <h1 className={styles.adminTitle}>Manage {adminDepartment} Events</h1>
+        <button className={styles.logoutButton} onClick={handleLogout}>
+          <FiLogOut size={20} /> Logout
+        </button>
+      </div>
       <input
         type="text"
         placeholder="Search events..."

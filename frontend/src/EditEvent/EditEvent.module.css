@@ -47,6 +47,7 @@
   width: 100%;
   max-width: 400px;
   transition: all 0.3s ease;
+  margin-top: 2vh;
 }
 
 .input:focus,
