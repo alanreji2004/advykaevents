@@ -13,6 +13,7 @@ const Cordinators = () => {
   const [coordinator1, setCoordinator1] = useState({ name: "", phone: "" });
   const [coordinator2, setCoordinator2] = useState({ name: "", phone: "" });
   const [googleFormLink, setGoogleFormLink] = useState("");
+  const [isOpenEvent, setIsOpenEvent] = useState(false);
   const [image, setImage] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [uploading, setUploading] = useState(false);
@@ -50,7 +51,7 @@ const Cordinators = () => {
       !eventType || 
       !coordinator1.name ||
       !coordinator1.phone ||
-      !googleFormLink ||
+      (!isOpenEvent && !googleFormLink) || 
       !imageUrl
     ) {
       alert("Please fill in all required fields!");
@@ -69,8 +70,9 @@ const Cordinators = () => {
         cor1_num: coordinator1.phone,
         cor2_name: coordinator2.name,
         cor2_num: coordinator2.phone,
-        googleFormLink,
+        googleFormLink: isOpenEvent ? "" : googleFormLink,
         eventPoster: imageUrl,
+        isOpenEvent,
       });
 
       alert("Event added successfully!");
@@ -84,6 +86,7 @@ const Cordinators = () => {
       setCoordinator1({ name: "", phone: "" });
       setCoordinator2({ name: "", phone: "" });
       setGoogleFormLink("");
+      setIsOpenEvent(false);
       setImage(null);
       setImageUrl("");
     } catch (error) {
@@ -145,6 +148,7 @@ const Cordinators = () => {
           <option value="competition">Competition</option>
           <option value="workshop">Workshop</option>
           <option value="event">Event</option>
+          <option value="expo">Expo</option>
         </select>
 
         <label className={styles.label}>Enter Coordinators' Details</label>
@@ -190,6 +194,19 @@ const Cordinators = () => {
           />
         </div>
 
+        <div className={styles.checkboxContainer}>
+          <input
+            type="checkbox"
+            id="openEvent"
+            checked={isOpenEvent}
+            onChange={() => {
+              setIsOpenEvent(!isOpenEvent);
+              if (!isOpenEvent) setGoogleFormLink("");
+            }}
+          />
+          <label htmlFor="openEvent">Open Event (No Registration)</label>
+        </div>
+
         <label className={styles.label}>Enter Form Link</label>
         <input
           type="text"
@@ -197,6 +214,7 @@ const Cordinators = () => {
           className={styles.input}
           value={googleFormLink}
           onChange={(e) => setGoogleFormLink(e.target.value)}
+          disabled={isOpenEvent}
         />
 
         <label className={styles.label}>Upload Event Poster</label>

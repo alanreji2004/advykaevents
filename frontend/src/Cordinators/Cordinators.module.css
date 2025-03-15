@@ -167,4 +167,29 @@
       gap: 5px;
     }
   }
+  .checkboxContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
   
+  .checkboxContainer input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: orange; 
+    cursor: pointer;
+  }
+  
+  .checkboxContainer label {
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+  }
+  .input:disabled {
+    background-color: #c5c5c5; 
+    color: #777; 
+    cursor: not-allowed;
+    border: 1px solid #555; 
+  }
